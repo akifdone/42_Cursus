@@ -6,7 +6,7 @@
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 15:34:22 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/08 17:44:51 by mdone            ###   ########.fr       */
+/*   Updated: 2023/07/15 01:17:06 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_strrchr(const char *s, int c)
 	i = ft_strlen(s);
 	while (i >= 0)
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
+		if (s[i] == (char)c)
+			return (&((char *)s)[i]);
 		i--;
 	}
-	return (0);
+	return ((char *) '\0');
 }

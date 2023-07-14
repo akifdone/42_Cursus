@@ -5,24 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 13:22:11 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/11 14:06:30 by mdone            ###   ########.fr       */
+/*   Created: 2023/07/13 13:43:21 by mdone             #+#    #+#             */
+/*   Updated: 2023/07/14 19:42:48 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str2;
-	size_t	len;
+	int		i;
+	char	*ret;
 
-	len = ft_strlen(str);
-	str2 = (char *)malloc(len + 1);
-	if (!(str2))
-	{
+	if (!s)
 		return (NULL);
+	i = 0;
+	ret = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!ret)
+		return (NULL);
+	while (s[i])
+	{
+		ret[i] = (*f)(i, s[i]);
+		++i;
 	}
-	ft_memcpy(str2, str, len + 1);
-	return (str2);
+	ret[i] = '\0';
+	return (ret);
 }

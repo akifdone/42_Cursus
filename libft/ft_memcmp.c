@@ -6,7 +6,7 @@
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 15:33:02 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/10 17:06:54 by mdone            ###   ########.fr       */
+/*   Updated: 2023/07/15 01:23:57 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
 	unsigned char	*s1;
 	unsigned char	*s2;
 
+	if (num == 0)
+		return (0);
 	s1 = (unsigned char *)ptr1;
 	s2 = (unsigned char *)ptr2;
 	i = 0;
@@ -27,5 +29,5 @@ int	ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
 			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (0);
+	return (s1[i] - s2[i]);
 }

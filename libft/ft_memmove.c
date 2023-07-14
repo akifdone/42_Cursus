@@ -6,7 +6,7 @@
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 13:11:11 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/11 18:04:01 by mdone            ###   ########.fr       */
+/*   Updated: 2023/07/13 18:47:20 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char *d;
-	char *s;
+	char	*d;
+	char	*s;
 
 	d = (char *)dst;
 	s = (char *)src;

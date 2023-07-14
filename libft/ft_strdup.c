@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 13:22:40 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/14 19:42:29 by mdone            ###   ########.fr       */
+/*   Created: 2023/07/11 13:22:11 by mdone             #+#    #+#             */
+/*   Updated: 2023/07/11 14:06:30 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strdup(const char *str)
 {
-	size_t	i;
+	char	*str2;
+	size_t	len;
 
-	i = 0;
-	if (!s || !f)
-		return ;
-	while (i < ft_strlen(s))
+	len = ft_strlen(str);
+	str2 = (char *)malloc(len + 1);
+	if (!(str2))
 	{
-		(*f)(i, &s[i]);
-		i++;
+		return (NULL);
 	}
+	ft_memcpy(str2, str, len + 1);
+	return (str2);
 }
