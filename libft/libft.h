@@ -6,7 +6,7 @@
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 17:24:15 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/15 01:20:46 by mdone            ###   ########.fr       */
+/*   Updated: 2023/07/15 11:53:22 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -52,5 +58,14 @@ size_t	ft_strlcat(char *dest, char *src, size_t size);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_memcmp(const void *ptr1, const void *ptr2, size_t num);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstiter(t_list *lst, void (*f)(void*));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
 
 #endif

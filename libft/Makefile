@@ -6,7 +6,7 @@
 #    By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/07 18:12:35 by mdone             #+#    #+#              #
-#    Updated: 2023/07/07 18:12:36 by mdone            ###   ########.fr        #
+#    Updated: 2023/07/15 11:59:28 by mdone            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,9 @@ clean:
 fclean: clean
 	@if [ -e $(NAME) ]; then rm $(NAME); fi
 	@echo "Libft Deleted."
+
+bonus: $(OBJ) $(B_OBJ)
+	ar -rcs $(NAME) $(OBJ) $(B_OBJ)
 
 re: clean all
 

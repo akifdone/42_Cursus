@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 13:11:11 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/15 15:12:32 by mdone            ###   ########.fr       */
+/*   Created: 2023/07/15 11:50:48 by mdone             #+#    #+#             */
+/*   Updated: 2023/07/15 12:14:09 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!dst && !src)
-		return (0);
-	if (dst > src)
+	t_list	*new;
+	t_list	*begin;
+	void	*content;
+
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	begin = NULL;
+	while (lst)
 	{
-		while (len--)
-		*((unsigned char *)(dst + len)) = *((unsigned char *)(src + len));
+		content = (*f)(lst->content);
+		new = ft_lstnew(content);
+		if (!new)
+		{
+			(*del)(content);
+			ft_lstclear(&begin, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&begin, new);
+		lst = lst->next;
 	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
-}
-int main(){
-	char *src = "123456789";
-	char *dst = "123456789";
-	ft_memmove(dst, src, 6);
-	printf("%s", dst);
-	return 0;
+	return (begin);
 }

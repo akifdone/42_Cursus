@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdone < mdone@student.42kocaeli.com.tr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 13:11:11 by mdone             #+#    #+#             */
-/*   Updated: 2023/07/15 15:12:32 by mdone            ###   ########.fr       */
+/*   Created: 2023/07/15 11:50:18 by mdone             #+#    #+#             */
+/*   Updated: 2023/07/15 11:54:12 by mdone            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (!dst && !src)
-		return (0);
-	if (dst > src)
+	t_list	*node;
+
+	if (!lst)
+		return ;
+	while (*lst)
 	{
-		while (len--)
-		*((unsigned char *)(dst + len)) = *((unsigned char *)(src + len));
+		node = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = node;
 	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
-}
-int main(){
-	char *src = "123456789";
-	char *dst = "123456789";
-	ft_memmove(dst, src, 6);
-	printf("%s", dst);
-	return 0;
 }
