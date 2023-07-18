@@ -28,3 +28,12 @@ void	*ft_memchr(const void *ptr, int c, size_t n)
 	}
 	return ((void *) NULL);
 }
+/*
+int main()
+{
+    int arr[] = {10,20,30,40,50};
+    int src = 30;
+    void *rsl = ft_memchr(arr,src,sizeof(arr));
+    printf("%d",*(int *)rsl);
+}
+*/
